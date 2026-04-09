@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { Search, DollarSign, FileText, Target, CheckCircle, ArrowRight } from 'lucide-react'
 
 export default function HomePage() {
@@ -34,12 +35,12 @@ export default function HomePage() {
             Our success fee model means we only win when you win.
           </p>
           <div className="flex justify-center gap-4">
-            <button className="px-8 py-4 bg-blue-600 text-white rounded-lg text-lg font-semibold hover:bg-blue-700 transition flex items-center gap-2">
-              Start Free Trial <ArrowRight className="h-5 w-5" />
-            </button>
-            <button className="px-8 py-4 border-2 border-gray-300 rounded-lg text-lg font-semibold hover:border-gray-400 transition">
+            <Link href="/search" className="px-8 py-4 bg-blue-600 text-white rounded-lg text-lg font-semibold hover:bg-blue-700 transition flex items-center gap-2">
+              Search Live Opportunities <ArrowRight className="h-5 w-5" />
+            </Link>
+            <Link href="/search" className="px-8 py-4 border-2 border-gray-300 rounded-lg text-lg font-semibold hover:border-gray-400 transition">
               View Demo
-            </button>
+            </Link>
           </div>
         </div>
       </section>
