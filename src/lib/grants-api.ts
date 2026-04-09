@@ -202,35 +202,6 @@ export async function searchUsaSpending(params: SearchParams): Promise<GrantOppo
   }
 }
 
-// ─── COMBINED SEARCH ─────────────────────────────────────────────────────────
-
-export async function searchAll(params: SearchParams): Promise<{
-  grants: GrantOpportunity[]
-  rfps: GrantOpportunity[]
-  sbir: GrantOpportunity[]
-  awards: GrantOpportunity[]
-  total: number
-}> {
-  const [grants, rfps, sbir, awards] = await Promise.allSettled([
-    searchGrantsGov(params),
-    searchSamGov(params),
-    searchSbir(params),
-    searchUsaSpending(params),
-  ])
-
-  const g = grants.status === 'fulfilled' ? grants.value : []
-  const r = rfps.status === 'fulfilled' ? rfps.value : []
-  const s = sbir.status === 'fulfilled' ? sbir.value : []
-  const a = awards.status === 'fulfilled' ? awards.value : []
-
-  return {
-    grants: g,
-    rfps: r,
-    sbir: s,
-    awards: a,
-    total: g.length + r.length + s.length + a.length,
-  }
-}
 
 // ─── HELPERS ─────────────────────────────────────────────────────────────────
 
